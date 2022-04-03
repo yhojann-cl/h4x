@@ -3,7 +3,9 @@
 Graphical pentesting tool using [Electron](https://www.electronjs.org/) and
 [NodeJS](https://nodejs.org/es/).
 
-Language support:
+![DNS Queries](./cap.png)
+
+Supported languages:
 
 - English
 - Spanish
@@ -51,10 +53,3 @@ npm run make
 | Clients   | Connections flow              | Under construction |
 | Panic     | Secure deletion local fingers | Under construction |
 | Panic     | Secure deletion local files   | Under construction |
-
-
-## Screenshots
-
-![DNS Queries](./assets/capture-dns.png)
-
-![DNS Queries](./assets/capture-conversor.png)
