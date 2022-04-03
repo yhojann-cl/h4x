@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>H4X</title>
+
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: 'unsafe-inline';" />
+        <meta http-equiv="X-Content-Security-Policy" content="default-src 'self' data: 'unsafe-inline';" />
+
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="assets/css/app.css" rel="stylesheet" />
+        <meta name="theme-color" content="#4d4948" />
+
+        <script src="assets/js/bootstrap.min.js"></script>
+    </head>
+    <body class="bg-dark text-light h-100">
+        <div class="d-flex h-100">
+            <sidebar class="h-100 p-2 pe-1 d-block">
+                <h3 class="text-center w-100 mb-3 mt-2 fw-normal text-primary-2 user-select-none">H4X</h3>
+                <div class="accordion" id="sidebar-accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button text-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-accordion-tools">
+                                <i class="fa fa-briefcase me-3"></i>
+                                Herramientas
+                            </button>
+                        </h2>
+                        <div id="sidebar-accordion-tools" class="accordion-collapse collapse show" data-bs-parent="#sidebar-accordion">
+                            <div class="accordion-body p-0 pb-2">
+                                <div class="list-group">
+                                    <button data-component="algorithm-conversor" class="list-group-item list-group-item-action">Conversor algoritmos</button>
+                                    <button data-component="code-cleaner" class="list-group-item list-group-item-action">Limpiador de código</button>
+                                    <button data-component="hash-detector" class="list-group-item list-group-item-action">Detector de Hashes y Algoritmos</button>
+                                    <button data-component="url-deofuscator" class="list-group-item list-group-item-action">Desofuscador de URL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                <i class="fa fa-eye-slash me-3"></i>
+                                Descubrimiento
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#sidebar-accordion">
+                            <div class="accordion-body p-0 pb-2">
+                                <div class="list-group">
+                                    <button data-component="http-directories-search" class="list-group-item list-group-item-action">Buscador de directorios HTTP</button>
+                                    <button data-component="dns-queries" class="list-group-item list-group-item-action">Registros DNS</button>
+                                    <button data-component="network-discovery" class="list-group-item list-group-item-action">Descubridor de red</button>
+                                    <button data-component="socket-services-enumerator" class="list-group-item list-group-item-action">Escaneador de puertos y servicios</button>
+                                    <button data-component="subdomains-enumerator" class="list-group-item list-group-item-action">Escaneador de subdominios</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-accordion-clients">
+                                <i class="fa fa-plug me-3"></i>
+                                Clientes
+                            </button>
+                        </h2>
+                        <div id="sidebar-accordion-clients" class="accordion-collapse collapse" data-bs-parent="#sidebar-accordion">
+                            <div class="accordion-body p-0 pb-2">
+                                <div class="list-group">
+                                    <button data-component="plain-socket-client" class="list-group-item list-group-item-action">Cliente plano de Socket</button>
+                                    <button data-component="json-rest-client" class="list-group-item list-group-item-action">Cliente Json/REST</button>
+                                    <button data-component="xml-soap-client" class="list-group-item list-group-item-action">Cliente XML/SOAP</button>
+                                    <button data-component="tcp-flow-manager" class="list-group-item list-group-item-action">Cliente de Flujo de Conexiones</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-accordion-panic">
+                                <i class="fa fa-trash me-3"></i>
+                                Pánico
+                            </button>
+                        </h2>
+                        <div id="sidebar-accordion-panic" class="accordion-collapse collapse" data-bs-parent="#sidebar-accordion">
+                            <div class="accordion-body p-0 pb-2">
+                                <div class="list-group">
+                                    <button data-component="local-fingerprints" class="list-group-item list-group-item-action">Eliminación de huellas locales</button>
+                                    <button data-component="secure-deletion" class="list-group-item list-group-item-action">Eliminación segura de archivos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </sidebar>
+            <main class="flex-grow-1 h-100 p-2 ps-1 d-flex flex-column">
+                <div class="btn-group w-100 my-2">
+                    <button type="button" class="btn btn-secondary"><i class="fa fa-angle-left"></i></button>
+                    <div class="container-fluid px-0 text-nowrap overflow-hidden"></div>
+                    <button type="button" class="btn btn-secondary"><i class="fa fa-angle-right"></i></button>
+                </div>
+                <components class="d-block mt-2 flex-fill overflow-auto">
+                    <div id="welcome" class="d-flex flex-column flex-wrap justify-content-center h-100 text-center text-muted user-select-none">
+                        <h1>H4X SECURITY</h1>
+                        <p>Copyright 2022.</p>
+                    </div>
+                </components>
+            </main>
+        </div>
+        <div class="font-monospace slide-vertical" id="log">
+            <div class="p-2"></div>
+        </div>
+    </body>
+</html>

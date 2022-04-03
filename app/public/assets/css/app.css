@@ -1,0 +1,251 @@
+:root {
+    --color-foreground: 255, 255, 255; /* RGB */
+    --color-background: 0, 0, 0; /* RGB */
+    --color-primary-1: 13, 202, 240; /* RGB */
+    --color-primary-2: 13, 240, 169; /*119, 224, 200;*/ /* RGB */
+    --color-log-foreground: 16, 220, 255; /* RGB */
+    --color-log-background: 0, 0, 0; /* RGB */
+}
+
+:root {
+    color-scheme: dark;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    text-rendering: optimizeLegibility;
+}
+
+sidebar {
+    width: 300px;
+    min-width: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+main > div:nth-child(1) {
+    min-height: 36px;
+}
+
+.text-primary-1 {
+    color: rgb(var(--color-primary-1));
+}
+
+.text-primary-2 {
+    color: rgb(var(--color-primary-2));
+}
+
+.form-label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.form-control,
+.form-select {
+    color: rgb(var(--color-primary-2));
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    resize: none;
+}
+
+.form-control:hover,
+.form-control:focus,
+.form-select:hover,
+.form-select:focus {
+    color: rgb(var(--color-primary-2));
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    resize: none;
+    box-shadow: none;
+}
+
+.form-control:disabled,
+.form-control[readonly],
+.form-select:disabled,
+.form-select[readonly] {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color:  rgba(255, 255, 255, 0.15);
+}
+
+.form-control::selection,
+.form-select::selection {
+    background: rgba(var(--color-primary-2), 0.8);
+    color: rgba(0, 0, 0, 0.7)
+}
+
+.form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23AAAAAA' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.input-group-text {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(var(--color-primary-2), 0.8);
+}
+
+option, optgroup {
+    -webkit-appearance: none;
+}
+
+select optgroup {
+    background: rgb(60, 60, 60);
+}
+
+select option {
+    background: rgb(60, 60, 60);
+}
+
+select option:focus,
+select option:hover,
+select option:checked {
+    background: rgb(40, 40, 40);
+}
+
+.accordion-item {
+    background-color: transparent;
+}
+
+.accordion-button,
+.accordion-button:not(.collapsed) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.accordion-button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.accordion-button:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.accordion-body > .list-group {
+    border-radius: 0;
+}
+
+.accordion-body > .list-group > .list-group-item {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.accordion-body > .list-group > .list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23AAAAAA'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23AAAAAA'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.table-active {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+th {
+    font-weight: normal;
+}
+
+td {
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: rgba(var(--color-primary-1), 0.2);
+}
+
+.table >:not(:last-child) >:last-child >* {
+    border-bottom-color: rgba(var(--color-primary-1), 0.5);
+}
+
+.form-check, .form-check * {
+    cursor: pointer;
+}
+
+main > .btn-group > div.container-fluid > div.btn-group.active .btn {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8)
+}
+
+main > .btn-group {
+    background-color: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+main > .btn-group .btn {
+    background-color: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.6);
+    border: 0;
+}
+
+main > .btn-group .btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+main > .btn-group .btn:focus {
+    box-shadow: none;
+}
+
+main > .btn-group .btn-group > .btn {
+    border-radius: 0;
+}
+
+main > .btn-group .btn-group > .btn:nth-child(1) {
+    width: 170px;
+    margin-left: 1px;
+}
+
+.slide-vertical {
+    transition: height 0.3s, top 0.3s;
+    z-index: 10;
+}
+
+#log {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(16, 220, 255);
+    overflow: hidden scroll;
+    z-index: 10;
+    line-height: 20px;
+}
+
+#log[selected]{
+    border-bottom: 2px solid rgb(16, 220, 255);
+    box-shadow: 0px 24px 39px -31px #000;
+    height: 350px;
+}
+
+#log i {
+    width: 12px;
+}

@@ -1,0 +1,29 @@
+{
+    "name": "H4X",
+    "icons": [
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png",
+            "density": "1.0"
+        },
+        {
+            "src": "/favicon-36x36.png",
+            "sizes": "36x36",
+            "type": "image/png",
+            "density": "1.0"
+        },
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "density": "1.0"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "density": "1.0"
+        }
+    ]
+}
