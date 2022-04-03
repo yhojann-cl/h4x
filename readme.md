@@ -53,3 +53,8 @@ npm run make
 | Clients   | Connections flow              | Under construction |
 | Panic     | Secure deletion local fingers | Under construction |
 | Panic     | Secure deletion local files   | Under construction |
+
+
+## Support
+
+Support the creator for better support [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=KM2KBE8F982KS)
