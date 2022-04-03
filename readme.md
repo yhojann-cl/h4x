@@ -1,6 +1,7 @@
 # H4X
 
-Graphical pentesting tool using Electron and NodeJS.
+Graphical pentesting tool using [Electron](https://www.electronjs.org/) and
+[NodeJS](https://nodejs.org/es/).
 
 Language support:
 
