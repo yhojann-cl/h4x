@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Subdomain enumeration",
+        "description": "Subdomain search engine using multiple techniques."
+    }
+}

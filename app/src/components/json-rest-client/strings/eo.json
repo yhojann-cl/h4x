@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "JSON/REST-kliento",
+        "description": "HTTP-kliento sub JSON-petoj kaj respondoj kaj HTTP-verboj."
+    }
+}

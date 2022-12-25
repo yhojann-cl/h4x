@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "TCP/UDP service enumerator",
+        "description": "Enumerator of exposed services on TCP/UDP ports."
+    }
+}

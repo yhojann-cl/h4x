@@ -1,0 +1,13 @@
+{
+    "component": {
+        "title": "Koda mendo",
+        "description": "Mendado de multoblaj specoj de fontkodoj."
+    },
+    "input": "Enigo",
+    "placeholder": "Enigu vian kodon ĉi tie",
+    "submit": "Mendokodo",
+    "search": {
+        "placeholder": "Teksto por serĉi",
+        "button": "Serĉi"
+    }
+}

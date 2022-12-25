@@ -1,0 +1,13 @@
+{
+    "component": {
+        "title": "Ordenamiento de código",
+        "description": "Ordenamiento de múltiples tipos de códigos fuente."
+    },
+    "input": "Entrada",
+    "placeholder": "Ingresa tu código acá",
+    "submit": "Ordenar código",
+    "search": {
+        "placeholder": "Texto a buscar",
+        "button": "Buscar"
+    }
+}

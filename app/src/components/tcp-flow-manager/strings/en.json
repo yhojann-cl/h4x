@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "TCP streams",
+        "description": "Creator client of sequential TCP flows."
+    }
+}

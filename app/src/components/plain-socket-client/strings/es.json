@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Cliente Socket plano",
+        "description": "Cliente TCP/UDP plano con transferencia en tiempo real."
+    }
+}

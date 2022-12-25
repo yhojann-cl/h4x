@@ -14,6 +14,7 @@ const createWindow = () => {
         height: 580,
         minWidth: 1150,
         minHeight: 580,
+        icon: path.join(__dirname, '/public/desktop-icon.png'),
         webPreferences: {
             preload: path.join(__dirname, '/src/loader.js')
         }
@@ -23,7 +24,7 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, '/public/index.html'));
 
     // Hide window toolbar
-    mainWindow.setMenu(null);
+    // mainWindow.setMenu(null);
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools();

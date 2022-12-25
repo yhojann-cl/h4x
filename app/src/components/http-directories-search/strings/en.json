@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "HTTP path finder",
+        "description": "Look for routes through brute force attack."
+    }
+}

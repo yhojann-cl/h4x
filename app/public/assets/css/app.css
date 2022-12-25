@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 3px;
+    /*width: 3px;*/
 }
 
 ::-webkit-scrollbar-track {
@@ -40,10 +40,20 @@ body {
 }
 
 sidebar {
-    width: 300px;
-    min-width: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    z-index: 0;
+    width: 50px;
+    min-width: 50px;
+}
+
+sidebar.sidebar-legend::after {
+    z-index: 1;
+    position: absolute;
+    content: "ACCESOS RÁPIDOS";
+    color: var(--bs-secondary);
+    top: 50%;
+    right: 50%;
+    transform: scale(-1) translate(-50%, 50%);
+    writing-mode: vertical-lr;
 }
 
 main > div:nth-child(1) {
@@ -62,9 +72,15 @@ main > div:nth-child(1) {
     color: rgba(255, 255, 255, 0.6);
 }
 
+.text-green,
+.text-green:hover,
+.text-green:focus
+{
+    color: rgb(var(--color-primary-2));
+}
+
 .form-control,
 .form-select {
-    color: rgb(var(--color-primary-2));
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.15);
     resize: none;
@@ -74,7 +90,6 @@ main > div:nth-child(1) {
 .form-control:focus,
 .form-select:hover,
 .form-select:focus {
-    color: rgb(var(--color-primary-2));
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
     resize: none;
@@ -92,7 +107,7 @@ main > div:nth-child(1) {
 .form-control::selection,
 .form-select::selection {
     background: rgba(var(--color-primary-2), 0.8);
-    color: rgba(0, 0, 0, 0.7)
+    color: rgba(0, 0, 0, 1)
 }
 
 .form-select {
@@ -103,7 +118,6 @@ main > div:nth-child(1) {
 .input-group-text {
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.1);
-    color: rgba(var(--color-primary-2), 0.8);
 }
 
 option, optgroup {
@@ -124,46 +138,6 @@ select option:checked {
     background: rgb(40, 40, 40);
 }
 
-.accordion-item {
-    background-color: transparent;
-}
-
-.accordion-button,
-.accordion-button:not(.collapsed) {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.accordion-button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-}
-
-.accordion-button:focus {
-    border-color: transparent;
-    box-shadow: none;
-}
-
-.accordion-body > .list-group {
-    border-radius: 0;
-}
-
-.accordion-body > .list-group > .list-group-item {
-    background-color: transparent;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.accordion-body > .list-group > .list-group-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.accordion-button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23AAAAAA'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-}
-
-.accordion-button::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23AAAAAA'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-}
-
 .card {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -181,9 +155,9 @@ td {
     border-bottom-color: rgba(var(--color-primary-1), 0.2);
 }
 
-.table >:not(:last-child) >:last-child >* {
+/*.table >:not(:last-child) >:last-child >* {
     border-bottom-color: rgba(var(--color-primary-1), 0.5);
-}
+}*/
 
 .form-check, .form-check * {
     cursor: pointer;
@@ -248,4 +222,20 @@ main > .btn-group .btn-group > .btn:nth-child(1) {
 
 #log i {
     width: 12px;
+}
+
+.btn-dashed {
+    border-style: dashed !important;
+}
+
+#shortcuts.drag-active {
+    background-image: linear-gradient(45deg, #262e38 25%, #212529 25%, #212529 50%, #262e38 50%, #262e38 75%, #212529 75%, #212529 100%);
+    background-size: 56.57px 56.57px;
+}
+
+#shortcuts button {
+    position: relative;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
 }

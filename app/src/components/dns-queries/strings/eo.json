@@ -1,0 +1,31 @@
+{
+    "component": {
+        "title": "DNS rekordoj",
+        "description": "Kontrolu DNS rekordojn permane aŭ aŭtomate."
+    },
+    "accept": "Akcepti",
+    "optional": "nedeviga",
+    "hostname": "Domajna nomo",
+    "nameserver": "NS servilo",
+    "resolutionType": "Rezolucia tajpu",
+    "resolve": "Ordigi",
+    "cancel": "Nuligi",
+    "clearResults": "",
+    "copyResults": "Kopii rezultojn",
+    "downloadResults": "Elŝutu rezultojn",
+    "gettingNS": "akiranta ...",
+    "select": "Elektu",
+    "selectAll": "Ĉiuj",
+    "selectGenerics": "Pli ofta",
+    "unselectAll": "Neniu",
+    "results": {
+        "title": "Rezulto",
+        "type": "Tajpu",
+        "name": "Nomo",
+        "value": "Valoro",
+        "ttl": "TTL",
+        "priority": "Prioritato",
+        "empty": "Neniuj rekordoj",
+        "starting": "Komencante"
+    }
+}

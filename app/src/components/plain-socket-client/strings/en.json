@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Flat Socket client",
+        "description": "Flat TCP/UDP client with real-time transfer."
+    }
+}

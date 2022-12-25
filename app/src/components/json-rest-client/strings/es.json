@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Cliente JSON/REST",
+        "description": "Cliente HTTP bajo solicitudes y respuestas JSON y verbos HTTP."
+    }
+}

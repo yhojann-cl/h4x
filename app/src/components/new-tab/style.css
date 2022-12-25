@@ -1,0 +1,33 @@
+.new-tab-component .card-component {
+    cursor: pointer;
+    background-color: rgba(44, 48, 52, 1);
+}
+
+.new-tab-component .card-component:hover {
+    background-color: rgba(54, 58, 62, 1);
+}
+
+.new-tab-component .card-component > i.fa {
+    z-index: 0;
+    top: 0;
+    right: 0;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.new-tab-component .card-component-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.new-tab-component .card-component-title .btn {
+    width: 40px;
+    height: 40px;
+}
+
+.new-tab-component .card-component-description {
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

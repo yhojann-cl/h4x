@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "XML/SOAP kliento",
+        "description": "HTTP-kliento laŭ SOAP-protokolo (WSDL)."
+    }
+}

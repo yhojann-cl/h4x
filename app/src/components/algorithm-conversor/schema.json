@@ -1,0 +1,19 @@
+{
+    "version": "2.5.3-stable",
+    "title": "Algorithm conversor",
+    "icon": {
+        "shape": "fa-file-text-o",
+        "text": "AC",
+        "color": {
+            "normal": {
+                "foreground": "rgba(33, 37, 41, 1)",
+                "background": "rgba(255, 245, 129, 1)"
+            },
+            "hover": {
+                "foreground": "rgba(33, 37, 41, 1)",
+                "background": "rgba(255, 255, 179, 1)"
+            }
+        }
+    },
+    "categories": [ "text-tools" ]
+}

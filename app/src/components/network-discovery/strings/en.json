@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Network discoverer",
+        "description": "Analyzer of IP addresses, ranges and systems."
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Enumerador de servicios TCP/UDP",
+        "description": "Enumerador de servicios expuestos sobre puertos TCP/UDP."
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Hash Detector",
+        "description": "Detection of multiple types of hashes."
+    }
+}

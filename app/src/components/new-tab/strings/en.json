@@ -1,0 +1,15 @@
+{
+    "component": {
+        "title": "New Tab",
+        "description": "New tab and component selection."
+    },
+    "categories": {
+        "textTools": "Text tools",
+        "discovery": "Discovery",
+        "clients": "Clients",
+        "panic": "Panic"
+    },
+    "search": {
+        "placeholder": "Component to search"
+    }
+}

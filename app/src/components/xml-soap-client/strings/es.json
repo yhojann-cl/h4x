@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Cliente XML/SOAP",
+        "description": "Cliente HTTP bajo protocolo SOAP (WSDL)."
+    }
+}

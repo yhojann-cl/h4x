@@ -1,0 +1,19 @@
+{
+    "version": "2.1.3-stable",
+    "title": "DNS queries",
+    "icon": {
+        "shape": "fa-cloud",
+        "text" : "DQ",
+        "color": {
+            "normal": {
+                "foreground": "rgba(33, 37, 41, 1)",
+                "background": "rgba(176, 193, 255, 1)"
+            },
+            "hover": {
+                "foreground": "rgba(33, 37, 41, 1)",
+                "background": "rgba(234, 239, 255, 1)"
+            }
+        }
+    },
+    "categories": [ "discovery", "network", "dns" ]
+}

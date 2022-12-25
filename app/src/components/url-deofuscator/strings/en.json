@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "URL deobfuscator",
+        "description": "Deobfuscator of parameters in URLs."
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Eliminación de huellas locales",
+        "description": "Eliminación segura de registros de usuario, historial de accesos y huellas varias."
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "JSON/REST client",
+        "description": "HTTP client under JSON requests and responses and HTTP verbs."
+    }
+}

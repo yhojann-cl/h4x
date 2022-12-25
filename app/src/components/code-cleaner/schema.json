@@ -1,0 +1,19 @@
+{
+    "version": "1.1.0-stable",
+    "title": "Code cleaner",
+    "icon": {
+        "shape": "fa-file-code-o",
+        "text": "CC",
+        "color": {
+            "normal": {
+                "foreground": "rgba(33, 37, 41, 1)",
+                "background": "rgba(182, 255, 114, 1)"
+            },
+            "hover": {
+                "foreground": "rgba(33, 37, 41, 1)",
+                "background": "rgba(220, 255, 175, 1)"
+            }
+        }
+    },
+    "categories": [ "text-tools" ]
+}

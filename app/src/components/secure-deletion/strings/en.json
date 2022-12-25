@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Secure file deletion",
+        "description": "Secure deletion of files and directories using various methods."
+    }
+}

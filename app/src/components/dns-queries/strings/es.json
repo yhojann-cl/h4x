@@ -1,0 +1,31 @@
+{
+    "component": {
+        "title": "Registros DNS",
+        "description": "Consulta registros DNS de manera manual o automática."
+    },
+    "accept": "Aceptar",
+    "optional": "opcional",
+    "hostname": "Nombre de dominio",
+    "nameserver": "Servidor NS",
+    "resolutionType": "Tipo de resolución",
+    "resolve": "Resolver",
+    "cancel": "Cancelar",
+    "clearResults": "Eliminar resultados",
+    "copyResults": "Copiar resultados",
+    "downloadResults": "Descargar resultados",
+    "gettingNS": "obteniendo ...",
+    "select": "Seleccionar",
+    "selectAll": "Todos",
+    "selectGenerics": "Más comunes",
+    "unselectAll": "Ninguno",
+    "results": {
+        "title": "Resultados",
+        "type": "Tipo",
+        "name": "Nombre",
+        "value": "Valor",
+        "ttl": "TTL",
+        "priority": "Prioridad",
+        "empty": "Sin registros",
+        "starting": "Iniciando"
+    }
+}

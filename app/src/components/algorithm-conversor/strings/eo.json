@@ -1,0 +1,25 @@
+{
+    "component": {
+        "title": "Algoritma konvertilo",
+        "description": "Unudirekta kaj dudirekta mult-algoritma konvertilo."
+    },
+    "inputAlgorithm"       : "Eniga algoritmo",
+    "outputAlgorithm"      : "Eligo algoritmo",
+    "algorithmTwoway"      : "Duobla vojo",
+    "algorithmOneway"      : "Unudirekta",
+    "algorithmAscii"       : "Ascii",
+    "algorithmBase64"      : "Base64",
+    "algorithmHex"         : "Hexadecimal",
+    "algorithmHexPrefixX"  : "Hexadecimal (kun prefikso \\x)",
+    "algorithmDec"         : "Decimal",
+    "algorithmOct"         : "Octal",
+    "algorithmHtmlentity"  : "HTML Ento (dekuma eskapo)",
+    "algorithmUrlencode"   : "Urlencoded",
+    "algorithmMd5"         : "MD5",
+    "algorithmSha1"        : "SHA1",
+    "algorithmSha256"      : "SHA256",
+    "algorithmSha512"      : "SHA512",
+    "inputContent"         : "Teksto por konverti",
+    "outputContent"        : "Rezulto",
+    "inputUnderConstruction" : "Enirejo konstruata"
+}

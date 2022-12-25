@@ -4,15 +4,16 @@ const dnsAxfr = require('dns-axfr');
 var URL = require('url-parse');
 const { v4: uuidv4 } = require('uuid');
 
-/*
-TODO: boton cancelable, overflow a la tabla
-*/
+// TODO: boton cancelable, overflow a la tabla
 
-class Component {
+class DNSQueries {
 
-    constructor(app) {
-
+    constructor(app, tab, schema, strings) {
         this.app = app;
+        this.tab = tab;
+        this.schema = schema;
+        this.strings = strings;
+
         this.state = {
             records: {
                 'A'          : { id: 1, enabled: true, isCommon: true,  isSpecial: false },
@@ -52,7 +53,7 @@ class Component {
                 'NS'         : { id: 2, enabled: true, isCommon: true,  isSpecial: false },
                 'NSAP'       : { id: 22, enabled: true, isCommon: false, isSpecial: false },
                 'NSAP-PTR'   : { id: 23, enabled: true, isCommon: false, isSpecial: false },
-                'NSEC'       : { id: 43, enabled: true, isCommon: false, isSpecial: false },
+                'NSEC'       : { id: 47, enabled: true, isCommon: false, isSpecial: false },
                 'NSEC3'      : { id: 50, enabled: true, isCommon: false, isSpecial: false },
                 'NSEC3PARAM' : { id: 51, enabled: true, isCommon: false, isSpecial: false },
                 'NULL'       : { id: 10, enabled: true, isCommon: false, isSpecial: false },
@@ -81,80 +82,6 @@ class Component {
             methods: [ ],
             results: [ ]
         };
-
-        // Load strings
-        this.#setStrings();
-    }
-
-    #setStrings() {
-        this.str = {
-            es: {
-                component: {
-                    title: 'Registros DNS',
-                    description: 'Consulta registros DNS de manera manual o automática.'
-                },
-                accept: 'Aceptar',
-                optional: 'opcional',
-                hostname: 'Nombre de dominio',
-                nameserver: 'Servidor NS',
-                resolutionType: 'Tipo de resolución',
-                resolve: 'Resolver',
-                cancel: 'Cancelar',
-                clearResults: 'Eliminar resultados',
-                copyResults: 'Copiar resultados',
-                downloadResults: 'Descargar resultados',
-                gettingNS: 'obteniendo ...',
-                select: 'Seleccionar',
-                selectAll: 'Todos',
-                selectGenerics: 'Más comunes',
-                unselectAll: 'Ninguno',
-                results: {
-                    title: 'Resultados',
-                    type: 'Tipo',
-                    name: 'Nombre',
-                    value: 'Valor',
-                    ttl: 'TTL',
-                    priority: 'Prioridad',
-                    empty: 'Sin registros',
-                    starting: 'Iniciando'
-                }
-            },
-            en: {
-                component: {
-                    title: 'DNS records',
-                    description: 'Get DNS records manually or automatically.'
-                },
-                accept: 'Accept',
-                optional: 'optional',
-                hostname: 'Hostname',
-                nameserver: 'NS server',
-                resolutionType: 'Resolution type',
-                resolve: 'Resolve',
-                cancel: 'Cancel',
-                clearResults: 'Clear results',
-                copyResults: 'Copy results',
-                downloadResults: 'Download results',
-                gettingNS: 'getting ...',
-                select: 'Select',
-                selectAll: 'All',
-                selectGenerics: 'More common',
-                unselectAll: 'None',
-                results: {
-                    title: 'Results',
-                    type: 'Type',
-                    name: 'Name',
-                    value: 'Value',
-                    ttl: 'TTL',
-                    priority: 'Priority',
-                    empty: 'No records',
-                    starting: 'Starting'
-                }
-            }
-        };
-
-        const language = Intl.DateTimeFormat().resolvedOptions().locale;
-        const languageCode = language.includes('-') ? language.split('-')[0] : language;
-        this.str = this.str.hasOwnProperty(languageCode) ? this.str[languageCode] : this.str.en;
     }
 
     bindEvents(dom) {
@@ -169,9 +96,9 @@ class Component {
         const methodsCommonsButton = dom.querySelector('button[data-id="select-methods-commons"]');
         const methodsNoneButton = dom.querySelector('button[data-id="select-methods-none"]');
         const methodsChecks = dom.querySelectorAll('div[data-id="methods"] input[type="checkbox"]');
-        const copyResultsBtn = dom.querySelectorAll('button[data-id="results-copy"]');
-        const downloadResultsBtn = dom.querySelectorAll('button[data-id="results-download"]');
-        const clearResultsBtn = dom.querySelectorAll('button[data-id="results-clear"]');
+        const copyResultsBtn = dom.querySelector('button[data-id="results-copy"]');
+        const downloadResultsBtn = dom.querySelector('button[data-id="results-download"]');
+        const clearResultsBtn = dom.querySelector('button[data-id="results-clear"]');
 
         methodsDiv.style.height = 0;
 
@@ -241,16 +168,13 @@ class Component {
         });
 
         // Copy results
-        // TODO: Under construction
-        // copyResultsBtn.addEventListener('mouseDown', event => this.copyResults());
+        copyResultsBtn.addEventListener('mousedown', event => this.copyResults());
 
         // Download results
-        // TODO: Under construction
-        // downloadResultsBtn.addEventListener('mouseDown', event => this.downloadResults());
+        downloadResultsBtn.addEventListener('mousedown', event => this.downloadResults());
 
         // Clear results
-        // TODO: Under construction
-        // clearResultsBtn.addEventListener('mouseDown', event => this.clearResults(dom));
+        clearResultsBtn.addEventListener('mousedown', event => this.clearResults(dom));
     }
 
     async resolveAll(dom) {
@@ -300,7 +224,7 @@ class Component {
         ].forEach(obj => { obj.disabled = true })
 
         // Change submit button to cancel action
-        submitButtonText.textContent = this.str.cancel;
+        submitButtonText.textContent = this.strings.cancel;
         submitButtonIcon.classList.remove('d-none');
 
         // Not all dns servers support multiple dns queries in a single packet:
@@ -401,7 +325,7 @@ class Component {
 
         // Change submit button to normal state
         submitButtonIcon.classList.add('d-none');
-        submitButtonText.textContent = this.str.resolve;
+        submitButtonText.textContent = this.strings.resolve;
 
         // Enable controls
         [ methodSelector, methodsCloseButton, hostnameInput, customNSInput
@@ -413,7 +337,7 @@ class Component {
         const recordsTbody = dom.querySelector('table[data-id="records"] tbody');
 
         // Append records to results
-        this.results = this.results.concat(records);
+        this.state.results = this.state.results.concat(records);
 
         records.forEach(record => {
             const domParser = new DOMParser();
@@ -421,10 +345,10 @@ class Component {
                 <table>
                     <tbody>
                         <tr>
-                            <td class="text-primary-2">${record.type ? record.type.toHtml() : ''}</td>
-                            <td class="text-primary-2">${record.name ? record.name.toHtml() : ''}</td>
-                            <td class="text-primary-1">${record.ttl ? parseInt(record.ttl) : ''}</td>
-                            <td class="font-monospace">${record.value ? record.value.toHtml() : ''}</td>
+                            <td class="text-primary-2"><small>${record.type ? record.type.toHtml() : ''}</small></td>
+                            <td class="text-primary-2"><small>${record.name ? record.name.toHtml() : ''}</small></td>
+                            <td class="text-primary-1"><small>${record.ttl ? parseInt(record.ttl) : ''}</small></td>
+                            <td class="font-monospace"><small>${record.value ? record.value.toHtml() : ''}</small></td>
                         </tr>
                     </tbody>
                 </table>
@@ -438,7 +362,7 @@ class Component {
         const recordsTbody = dom.querySelector('table[data-id="records"] tbody');
 
         // Clear data
-        this.results = [ ];
+        this.state.results = [ ];
 
         // Clear old results on table
         recordsTbody.innerHTML = '';
@@ -478,101 +402,115 @@ class Component {
         const domParser = new DOMParser();
         const dom = domParser.parseFromString(`
             <div class="d-flex flex-column h-100 position-relative">
-                <div class="d-flex mb-2">
+                <div class="d-flex m-2">
                     <div class="w-25 me-1">
                         <div class="form-group">
-                            <label class="form-label w-100" for="hostname">
-                                ${this.str.hostname}
+                            <label class="form-label w-100 mb-1">
+                                <small>${this.strings.hostname}</small>
                             </label>
                             <input
-                                data-id="hostname" maxlength="255" type="text"
-                                value="${this.state.hostname}" required
-                                class="form-control" required autocomplete="off" />
+                                data-id="hostname"
+                                maxlength="255"
+                                type="text"
+                                value="${this.state.hostname}"
+                                required
+                                class="form-control form-control-sm text-light"
+                                autocorrect="off"
+                                autocapitalize="off"
+                                spellcheck="false"
+                                autocomplete="off" />
                         </div>
                     </div>
                     <div class="w-25 mx-1">
                         <div class="form-group">
-                            <label class="form-label w-100">
-                                ${this.str.nameserver}
+                            <label class="form-label w-100 mb-1">
+                                <small>${this.strings.nameserver}</small>
                             </label>
                             <input
-                                data-id="custom-ns" maxlength="255" type="text"
-                                class="form-control" autocomplete="off" required
+                                data-id="custom-ns"
+                                maxlength="255"
+                                type="text"
+                                class="form-control form-control-sm text-light"
+                                autocorrect="off"
+                                autocapitalize="off"
+                                spellcheck="false"
+                                autocomplete="off"
+                                required
                                 value="${this.state.customNS}" />
                         </div>
                     </div>
                     <div class="w-25 mx-1">
                         <div class="form-group">
-                            <label class="form-label w-100">
-                                ${this.str.resolutionType}
+                            <label class="form-label w-100 mb-1">
+                                <small>${this.strings.resolutionType}</small>
                             </label>
                             <select
                                 data-id="select-methods"
-                                class="form-select">
-                                <option>${this.str.select}</option>
+                                class="form-select form-select-sm text-light">
+                                <option>${this.strings.select}</option>
                             </select>
                         </div>
                     </div>
                     <div class="w-25 ms-1">
                         <div class="form-group">
-                            <label class="form-label w-100">
+                            <label class="form-label w-100 mb-1">
                                 &nbsp;
                             </label>
-                            <button data-id="btn-submit" type="button" class="btn btn-info w-100">
+                            <button data-id="btn-submit" type="button" class="btn btn-sm btn-primary w-100">
                                 <i class="fa fa-refresh fa-spin me-2 d-none"></i>
-                                <span>${this.str.resolve}</span>
+                                <span>${this.strings.resolve}</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="flex-fill position-relative">
-                    <div class="card h-100">
-                        <div class="card-body p-0 h-100 mh-100 overflow-auto">
-                            <table data-id="records" class="table table-hover m-0">
+                    <div class="card h-100 rounded-0">
+                        <div class="card-body p-0 h-100 mh-100">
+                            <table data-id="records" class="table table-hover m-0 mh-100">
                                 <thead>
                                     <tr class="table-active">
-                                        <th>
-                                            <span class="btn btn-sm text-light">${this.str.results.type}</span>
+                                        <th class="border-bottom border-secondary">
+                                            <span class="btn btn-sm text-light">${this.strings.results.type}</span>
                                         </th>
-                                        <th>
-                                            <span class="btn btn-sm text-light">${this.str.results.name}</span>
+                                        <th class="border-bottom border-secondary">
+                                            <span class="btn btn-sm text-light">${this.strings.results.name}</span>
                                         </th>
-                                        <th>
-                                            <span class="btn btn-sm text-light">${this.str.results.ttl}</span>
+                                        <th class="border-bottom border-secondary">
+                                            <span class="btn btn-sm text-light">${this.strings.results.ttl}</span>
                                         </th>
-                                        <th>
-                                            <span class="btn btn-sm text-light">${this.str.results.value}</span>
+                                        <th class="border-bottom border-secondary">
+                                            <span class="btn btn-sm text-light">${this.strings.results.value}</span>
                                             <div class="float-end">
                                                 <button
-                                                    data-id="results-clear" type="button"
-                                                    class="btn btn-sm btn-info me-1" title="${this.str.clearResults}">
-                                                    <i class="fa fa-refresh"></i>
-                                                </button>
-                                                <button
                                                     data-id="results-copy" type="button"
-                                                    class="btn btn-sm btn-info me-1" title="${this.str.copyResults}">
+                                                    class="btn btn-sm btn-primary me-1" title="${this.strings.copyResults}">
                                                     <i class="fa fa-files-o"></i>
                                                 </button>
                                                 <button
                                                     data-id="results-download" type="button"
-                                                    class="btn btn-sm btn-info" title="${this.str.downloadResults}">
+                                                    class="btn btn-sm btn-primary me-1" title="${this.strings.downloadResults}">
                                                     <i class="fa fa-download"></i>
+                                                </button>
+                                                <button
+                                                    data-id="results-clear" type="button"
+                                                    class="btn btn-sm btn-danger" title="${this.strings.clearResults}">
+                                                    <i class="fa fa-trash"></i>
                                                 </button>
                                             </div>
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody class="overflow-scroll"></tbody>
                             </table>
                         </div>
                     </div>
                 </div>
                 <div data-id="methods" class="position-absolute left-0 t-0 w-100 overflow-hidden bg-dark slide-vertical user-select-none">
-                    <h2 class="text-center text-muted mb-4">
-                        ${this.str.resolutionType}
-                    </h2>
-                    <div class="form-group p-2">
-                        <div class="row mb-2">
+                    <h4 class="text-center text-muted text-uppercase my-4">
+                        ${this.strings.resolutionType}
+                    </h4>
+                    <div class="px-4">
+                        <div class="row ms-0 me-0 mb-2">
                             ${Object.entries(this.state.records).map(([recordType, record]) => {
                                 const id = uuidv4();
                                 return `
@@ -587,7 +525,7 @@ class Component {
                                             <label
                                                 class="${(record.isSpecial) ? 'text-warning' : ''}"
                                                 for="${id}">
-                                                ${recordType}
+                                                <small>${recordType}</small>
                                             </label>
                                         </div>
                                     </div>
@@ -596,16 +534,16 @@ class Component {
                         </div>
                         <div>
                             <button type="button" class="btn btn-sm btn-link text-info" data-id="select-methods-all">
-                                ${this.str.selectAll}
+                                ${this.strings.selectAll}
                             </button>
                             <button type="button" class="btn btn-sm btn-link text-info" data-id="select-methods-commons">
-                                ${this.str.selectGenerics}
+                                ${this.strings.selectGenerics}
                             </button>
                             <button type="button" class="btn btn-sm btn-link text-info" data-id="select-methods-none">
-                                ${this.str.unselectAll}
+                                ${this.strings.unselectAll}
                             </button>
-                            <button data-id="methods-close" class="btn btn-info float-end px-5">
-                                ${this.str.accept}
+                            <button data-id="methods-close" class="btn btn-sm btn-primary float-end px-5">
+                                ${this.strings.accept}
                             </button>
                         </div>
                     </div>
@@ -617,4 +555,4 @@ class Component {
     }
 }
 
-module.exports = Component;
+module.exports = DNSQueries;

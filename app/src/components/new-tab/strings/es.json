@@ -1,0 +1,15 @@
+{
+    "component": {
+        "title": "Nueva pestaña",
+        "description": "Nueva pestaña y selección de componente."
+    },
+    "categories": {
+        "textTools": "Herramientas de texto",
+        "discovery": "Descubrimiento",
+        "clients": "Clientes",
+        "panic": "Pánico"
+    },
+    "search": {
+        "placeholder": "Componente a buscar"
+    }
+}

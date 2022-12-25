@@ -1,0 +1,15 @@
+{
+    "component": {
+        "title": "Nova langeto",
+        "description": "Nova langeto kaj elekto de komponantoj."
+    },
+    "categories": {
+        "textTools": "Tekstaj iloj",
+        "discovery": "Malkovro",
+        "clients": "Klientoj",
+        "panic": "Paniko"
+    },
+    "search": {
+        "placeholder": "Komponanto por serĉi"
+    }
+}

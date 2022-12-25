@@ -1,12 +1,55 @@
+const fs = require('fs')
+
 class Tab {
 
-    constructor(componentDOM) {
+    constructor(app, component) {
+        this.app = app;
+        this.component = component;
+        this.style = null;
         this.events = {
             onFocus: (tabDOM, componentDOM) => { },
             onClose: () => { }
         };
-        this.componentDOM = componentDOM;
-        this.dom = null;
+
+        // Instantiate the component
+        this.componentInstance = new this.component.object(
+            this.app, // App instance
+            this, // Tab instance
+            this.component.schema, // Component schema
+            this.component.strings // Component i18n strings
+        );
+        this.componentDOM = this.componentInstance.render();
+
+        // Render tab
+        this.tabDOM = this.render({
+            title: this.component.schema.title
+        });
+
+        // Append tab to right
+        document
+            .querySelector('main > .btn-group > .container-fluid')
+            .append(this.tabDOM);
+
+        // Append style to head if exist
+        if (fs.existsSync(`${this.component.path}/style.css`)) {
+            const content = fs.readFileSync(
+                `${this.component.path}/style.css`,
+                { encoding: 'utf8', flag: 'r' }
+            );
+
+            // Create style node
+            this.style = document.createElement('style');
+            this.style.textContent = content;
+            document.head.appendChild(this.style);
+        }
+
+        // Append component container to layout
+        document
+            .querySelector('components')
+            .append(this.componentDOM);
+
+        // Focus new component
+        this.focus();
     }
 
     onFocus(fn) {
@@ -18,8 +61,11 @@ class Tab {
     }
 
     close() {
+        this.events.onClose();
         this.componentDOM.remove();
-        this.dom.remove();
+        this.tabDOM.remove();
+        if(this.style != null)
+            this.style.remove();
 
         if(
             (document.querySelectorAll('components > div.d-none').length) &&
@@ -27,37 +73,41 @@ class Tab {
         )
             document.querySelector('components > div:last-child').classList.remove('d-none');
 
-        this.events.onClose();
+        // ES6 bug fix: Manual destructor
+        if(this.componentInstance.__proto__.hasOwnProperty('destructor'))
+            this.componentInstance.destructor();
+
+        this.componentInstance = null;
     }
 
     focus() {
         // Deactive all tabs
         document
             .querySelectorAll('main > .btn-group > .container-fluid > div')
-            .forEach(tabDOM => tabDOM.classList.remove('active'));
+            .forEach(tabDOMItem => tabDOMItem.classList.remove('active'));
 
         // Active current tab
-        this.dom.classList.add('active');
+        this.tabDOM.classList.add('active');
 
         // Hide all components
         document
             .querySelectorAll('components > div')
-            .forEach(component => {
-                component.classList.add('d-none');
+            .forEach(componentItem => {
+                componentItem.classList.add('d-none');
             });
 
         // Show current component
         this.componentDOM.classList.remove('d-none');
 
         // Call user event
-        this.events.onFocus(this.dom, this.componentDOM);
+        this.events.onFocus(this.tabDOM, this.componentDOM);
     }
 
     render(opts) {
         const domParser = new DOMParser();
 
         // Initialize tab
-        this.dom = domParser.parseFromString(`
+        const dom = domParser.parseFromString(`
             <div class="btn-group d-inline-flex">
                 <button type="button" class="btn btn-secondary text-truncate"></button>
                 <button type="button" class="btn btn-secondary m-0">&times;</button>
@@ -65,21 +115,21 @@ class Tab {
             `, 'text/html'
         ).querySelector('div');
 
-        this.dom
+        dom
             .querySelector('button.text-truncate')
             .textContent = opts.title;
 
         // Focus tab event
-        this.dom
+        dom
             .querySelector('button:nth-child(1)')
             .addEventListener('mousedown', event => this.focus());
 
         // Close tab event
-        this.dom
+        dom
             .querySelector('button:nth-child(2)')
             .addEventListener('mousedown', event => this.close());
 
-        return this.dom;
+        return dom;
     }
 }
 

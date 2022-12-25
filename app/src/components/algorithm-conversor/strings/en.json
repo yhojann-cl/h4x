@@ -1,0 +1,23 @@
+{
+    "component": {
+        "title": "Algorithms conversor",
+        "description": "One-way and two-way multi-algorithm converter"
+    },
+    "algorithmTwoway"      : "Two way",
+    "algorithmOneway"      : "One way",
+    "algorithmAscii"       : "Ascii",
+    "algorithmBase64"      : "Base64",
+    "algorithmHex"         : "Hexadecimal",
+    "algorithmHexPrefixX"  : "Hexadecimal (with \\x prefix)",
+    "algorithmDec"         : "Decimal",
+    "algorithmOct"         : "Octal",
+    "algorithmHtmlentity"  : "HTML Entities (Decimal escape)",
+    "algorithmUrlencode"   : "Urlencoded",
+    "algorithmMd5"         : "MD5",
+    "algorithmSha1"        : "SHA1",
+    "algorithmSha256"      : "SHA256",
+    "algorithmSha512"      : "SHA512",
+    "inputContent"         : "Text to convert",
+    "outputContent"        : "Result",
+    "inputUnderConstruction" : "Input under construction"
+}

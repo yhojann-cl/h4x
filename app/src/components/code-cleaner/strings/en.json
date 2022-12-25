@@ -1,0 +1,13 @@
+{
+    "component": {
+        "title": "Code ordering",
+        "description": "Ordering of multiple types of source codes."
+    },
+    "input": "Input",
+    "placeholder": "Enter your code here",
+    "submit": "Order code",
+    "search": {
+        "placeholder": "Text to search",
+        "button": "Search"
+    }
+}

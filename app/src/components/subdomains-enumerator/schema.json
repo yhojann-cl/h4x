@@ -1,0 +1,19 @@
+{
+    "version": "0.0.1-alpha",
+    "title": "Subdomains enumerator",
+    "icon": {
+        "shape": "fa-sitemap",
+        "text" : "SE",
+        "color": {
+            "normal": {
+                "foreground": "rgba(248, 249, 250, 1)",
+                "background": "rgba(125, 125, 125, 1)"
+            },
+            "hover": {
+                "foreground": "rgba(248, 249, 250, 1)",
+                "background": "rgba(136, 136, 136, 1)"
+            }
+        }
+    },
+    "categories": [ "discovery", "enumeration", "network", "dns" ]
+}

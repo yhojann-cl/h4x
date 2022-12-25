@@ -49,7 +49,7 @@
     "dns-axfr": "^0.2.3",
     "dns-query": "^0.8.0",
     "electron-squirrel-startup": "^1.0.0",
-    "glob": "^7.2.0",
+    "glob": "^7.2.3",
     "js-beautify": "^1.14.0",
     "url-parse": "^1.5.10",
     "uuid": "^8.3.2"

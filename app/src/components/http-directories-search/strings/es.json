@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Descubridor de rutas HTTP",
+        "description": "Busca rutas a traves de ataque por fuerza bruta."
+    }
+}

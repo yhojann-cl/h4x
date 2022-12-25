@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "Flujos TCP",
+        "description": "Cliente credor de flujos TCP secuenciales."
+    }
+}

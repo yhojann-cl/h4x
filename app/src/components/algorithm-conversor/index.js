@@ -1,74 +1,18 @@
 const CryptoJS = require('crypto-js');
 
-class Component {
+class AlgorithmConversor {
 
-    constructor(app) {
-
+    constructor(app, tab, schema, strings) {
         this.app = app;
-
-        // Load strings
-        this.#setStrings();
+        this.tab = tab;
+        this.schema = schema;
+        this.strings = strings;
 
         this.state = {
             inputAlgorithm  : 'ascii',
             outputAlgorithm : 'decimal',
             inputContent    : ''
         }
-    }
-
-    #setStrings() {
-        this.str = {
-            es: {
-                component: {
-                    title: 'Conversor de algoritmos',
-                    description: 'Conversor de múltiples algoritmos de una y doble vía'
-                },
-                algorithmTwoway      : 'Doble vía',
-                algorithmOneway      : 'Una vía',
-                algorithmAscii       : 'Ascii',
-                algorithmBase64      : 'Base64',
-                algorithmHex         : 'Hexadecimal',
-                algorithmHexPrefixX  : 'Hexadecimal (con prefijo \\x)',
-                algorithmDec         : 'Decimal',
-                algorithmOct         : 'Octal',
-                algorithmHtmlentity  : 'Entidad HTML (Escape decimal)',
-                algorithmUrlencode   : 'Urlencoded',
-                algorithmMd5         : 'MD5',
-                algorithmSha1        : 'SHA1',
-                algorithmSha256      : 'SHA256',
-                algorithmSha512      : 'SHA512',
-                inputContent         : 'Texto a convertir',
-                outputContent        : 'Resultado',
-                inputUnderConstruction : 'Entrada en construcción'
-            },
-            en: {
-                component: {
-                    title: 'Algorithms conversor',
-                    description: 'One-way and two-way multi-algorithm converter'
-                },
-                algorithmTwoway      : 'Two way',
-                algorithmOneway      : 'One way',
-                algorithmAscii       : 'Ascii',
-                algorithmBase64      : 'Base64',
-                algorithmHex         : 'Hexadecimal',
-                algorithmHexPrefixX  : 'Hexadecimal (with \\x prefix)',
-                algorithmDec         : 'Decimal',
-                algorithmOct         : 'Octal',
-                algorithmHtmlentity  : 'HTML Entities (Decimal escape)',
-                algorithmUrlencode   : 'Urlencoded',
-                algorithmMd5         : 'MD5',
-                algorithmSha1        : 'SHA1',
-                algorithmSha256      : 'SHA256',
-                algorithmSha512      : 'SHA512',
-                inputContent         : 'Text to convert',
-                outputContent        : 'Result',
-                inputUnderConstruction : 'Input under construction'
-            }
-        };
-
-        const language = Intl.DateTimeFormat().resolvedOptions().locale;
-        const languageCode = language.includes('-') ? language.split('-')[0] : language;
-        this.str = this.str.hasOwnProperty(languageCode) ? this.str[languageCode] : this.str.en;
     }
 
     bindEvents(dom) {
@@ -137,7 +81,7 @@ class Component {
 
         }else if(this.state.inputAlgorithm === 'htmlentity'){
             // TODO: Under construction.
-            this.app.error(`[algorithm-conversor] ${this.str.inputUnderConstruction}: htmlentity`)
+            this.app.error(`[algorithm-conversor] ${this.strings.inputUnderConstruction}: htmlentity`)
             input = '';
 
         }else if(this.state.inputAlgorithm === 'urlencode'){
@@ -227,66 +171,64 @@ class Component {
         const domParser = new DOMParser();
         const dom = domParser.parseFromString(`
             <div class="d-flex flex-column h-100">
-                <div class="d-flex">
+                <div class="d-flex mx-2 mt-2 mb-1">
                     <div class="w-50 me-1">
                         <select
                             data-id="select-input"
-                            class="form-select">
-                            <optgroup label="${this.str.algorithmTwoway}">
-                                <option selected value="ascii">${this.str.algorithmAscii}</option>
-                                <option value="base64">${this.str.algorithmBase64}</option>
-                                <option value="hexadecimal">${this.str.algorithmHex}</option>
-                                <option value="decimal">${this.str.algorithmDec}</option>
-                                <option value="octal">${this.str.algorithmOct}</option>
-                                <option value="htmlentity">${this.str.algorithmHtmlentity}</option>
-                                <option value="urlencode">${this.str.algorithmUrlencode}</option>
+                            class="form-select form-select-sm text-light">
+                            <optgroup label="${this.strings.algorithmTwoway}">
+                                <option selected value="ascii">${this.strings.algorithmAscii}</option>
+                                <option value="base64">${this.strings.algorithmBase64}</option>
+                                <option value="hexadecimal">${this.strings.algorithmHex}</option>
+                                <option value="decimal">${this.strings.algorithmDec}</option>
+                                <option value="octal">${this.strings.algorithmOct}</option>
+                                <option value="htmlentity">${this.strings.algorithmHtmlentity}</option>
+                                <option value="urlencode">${this.strings.algorithmUrlencode}</option>
                             </optgroup>
                         </select>
                     </div>
                     <div class="w-50 ms-1">
                         <select
                             data-id="select-output"
-                            class="form-select">
-                            <optgroup label="${this.str.algorithmTwoway}">
-                                <option value="ascii">${this.str.algorithmAscii}</option>
-                                <option value="base64">${this.str.algorithmBase64}</option>
-                                <option value="hexadecimal">${this.str.algorithmHex}</option>
-                                <option value="hexadecimal-prefix-x">${this.str.algorithmHexPrefixX}</option>
-                                <option selected value="decimal">${this.str.algorithmDec}</option>
-                                <option value="octal">${this.str.algorithmOct}</option>
-                                <option value="htmlentity">${this.str.algorithmHtmlentity}</option>
-                                <option value="urlencode">${this.str.algorithmUrlencode}</option>
+                           class="form-select form-select-sm text-light">
+                            <optgroup label="${this.strings.algorithmTwoway}">
+                                <option value="ascii">${this.strings.algorithmAscii}</option>
+                                <option value="base64">${this.strings.algorithmBase64}</option>
+                                <option value="hexadecimal">${this.strings.algorithmHex}</option>
+                                <option value="hexadecimal-prefix-x">${this.strings.algorithmHexPrefixX}</option>
+                                <option selected value="decimal">${this.strings.algorithmDec}</option>
+                                <option value="octal">${this.strings.algorithmOct}</option>
+                                <option value="htmlentity">${this.strings.algorithmHtmlentity}</option>
+                                <option value="urlencode">${this.strings.algorithmUrlencode}</option>
                             </optgroup>
-                            <optgroup label=${this.str.algorithmOneway}>
-                                <option value="md5">${this.str.algorithmMd5}</option>
-                                <option value="sha1">${this.str.algorithmSha1}</option>
-                                <option value="sha256">${this.str.algorithmSha256}</option>
-                                <option value="sha512">${this.str.algorithmSha512}</option>
+                            <optgroup label=${this.strings.algorithmOneway}>
+                                <option value="md5">${this.strings.algorithmMd5}</option>
+                                <option value="sha1">${this.strings.algorithmSha1}</option>
+                                <option value="sha256">${this.strings.algorithmSha256}</option>
+                                <option value="sha512">${this.strings.algorithmSha512}</option>
                             </optgroup>
                         </select>
                     </div>
                 </div>
-                <div class="flex-fill d-flex mt-2">
-                    <div class="w-50 me-1">
+                <div class="flex-fill d-flex mt-1">
+                    <div class="w-50">
                         <textarea
                             data-id="input-content"
-                            class="form-control font-monospace h-100"
+                            class="form-control font-monospace h-100 text-green rounded-0"
                             autocorrect="off"
                             autocapitalize="off"
                             spellcheck="false"
-                            rows="15"
-                            placeholder="${this.str.inputContent}"></textarea>
+                            placeholder="${this.strings.inputContent}"></textarea>
                     </div>
-                    <div class="w-50 ms-1">
+                    <div class="w-50">
                         <textarea
                             data-id="output-content"
-                            class="form-control font-monospace h-100"
+                            class="form-control font-monospace h-100 text-green rounded-0"
                             readonly
-                            rows="15"
                             autocorrect="off"
                             autocapitalize="off"
                             spellcheck="false"
-                            placeholder="${this.str.outputContent}"></textarea>
+                            placeholder="${this.strings.outputContent}"></textarea>
                     </div>
                 </div>
             </div>
@@ -296,4 +238,4 @@ class Component {
     }
 }
 
-module.exports = Component;
+module.exports = AlgorithmConversor;

@@ -1,0 +1,31 @@
+{
+    "component": {
+        "title": "DNS records",
+        "description": "Get DNS records manually or automatically."
+    },
+    "accept": "Accept",
+    "optional": "optional",
+    "hostname": "Hostname",
+    "nameserver": "NS server",
+    "resolutionType": "Resolution type",
+    "resolve": "Resolve",
+    "cancel": "Cancel",
+    "clearResults": "Clear results",
+    "copyResults": "Copy results",
+    "downloadResults": "Download results",
+    "gettingNS": "getting ...",
+    "select": "Select",
+    "selectAll": "All",
+    "selectGenerics": "More common",
+    "unselectAll": "None",
+    "results": {
+        "title": "Results",
+        "type": "Type",
+        "name": "Name",
+        "value": "Value",
+        "ttl": "TTL",
+        "priority": "Priority",
+        "empty": "No records",
+        "starting": "Starting"
+    }
+}

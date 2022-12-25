@@ -1,0 +1,6 @@
+{
+    "component": {
+        "title": "TCP-fluoj",
+        "description": "Kreinto-kliento de sinsekvaj TCP-fluoj."
+    }
+}

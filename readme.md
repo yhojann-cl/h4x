@@ -3,12 +3,13 @@
 Graphical pentesting tool using [Electron](https://www.electronjs.org/) and
 [NodeJS](https://nodejs.org/es/).
 
-![DNS Queries](./cap.png)
+![DNS Queries](./caps/dns-queries.png)
 
 Supported languages:
 
 - English
 - Spanish
+- Esperanto
 
 
 ## Requirements
@@ -21,7 +22,7 @@ Supported languages:
 In the `app` directory run:
 
 ```bash
-npm start
+npm install && npm start
 ```
 
 
