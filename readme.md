@@ -5,6 +5,8 @@ Graphical pentesting tool using [Electron](https://www.electronjs.org/) and
 
 ![DNS Queries](./caps/dns-queries.png)
 
+![Modular](./caps/modules.png)
+
 Supported languages:
 
 - English
