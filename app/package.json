@@ -1,7 +1,7 @@
 {
   "name": "h4x",
   "productName": "H4X",
-  "version": "3.2.84-alpha",
+  "version": "3.3.10-alpha",
   "description": "Red Team tools",
   "main": "index.js",
   "scripts": {
